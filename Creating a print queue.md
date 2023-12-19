@@ -1,9 +1,17 @@
 
 # Creating a print queue
 
-## Adding a Virtual Printer
+## Allowing File Devices Access to Printer
 
 ```bash
+sudo sed -i 's/#FileDevice No/FileDevice Yes/' /etc/cups/cups-files.conf
+sudo systemctl restart cups
+```
+- `sed -i 's/#FileDevice No/FileDevice Yes/' /etc/cups/cups-files.conf`: Replace `#FileDevice No` with `FileDevice Yes` in `/etc/cups/cups-files.conf.`
+
+## Adding a Virtual Printer
+
+```bash#
 /home/adarsh/cups/sbin/lpadmin -p MyVirtualPrinter -E -v file:/home/adarsh/output.pdf
 ```
 - `/home/adarsh/cups/sbin/lpadmin` : Path for `lpadmin` in CUPS.
