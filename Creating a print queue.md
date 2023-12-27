@@ -4,9 +4,9 @@
 ## Allowing File Devices Access to Printer
 
 ```bash
-sudo sed -i 's/#FileDevice No/FileDevice Yes/' /home/adarsh/cups/conf/cups-files.conf
+sudo sed -i 's/#FileDevice No/FileDevice Yes/' /home/adarsh/cups/build/etc/cups/cups-files.conf
 ```
-- `sed -i 's/#FileDevice No/FileDevice Yes/' /home/adarsh/cups/conf/cups-files.conf`: Replace `#FileDevice No` with `FileDevice Yes` in `/home/adarsh/cups/conf/cups-files.conf.`
+- `sed -i 's/#FileDevice No/FileDevice Yes/' /home/adarsh/cups/build/etc/cups/cups-files.conf`: Replace `#FileDevice No` with `FileDevice Yes` in `/home/adarsh/cups/build/etc/cups/cups-files.conf.`
 - Also build again to make changes to take effect.
 
 ## Adding a Virtual Printer
