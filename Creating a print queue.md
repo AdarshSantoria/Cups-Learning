@@ -4,17 +4,17 @@
 ## Allowing File Devices Access to Printer
 
 ```bash
-sudo sed -i 's/#FileDevice No/FileDevice Yes/' /etc/cups/cups-files.conf
-sudo systemctl restart cups
+sudo sed -i 's/#FileDevice No/FileDevice Yes/' /home/adarsh/cups/conf/cups-files.conf
 ```
-- `sed -i 's/#FileDevice No/FileDevice Yes/' /etc/cups/cups-files.conf`: Replace `#FileDevice No` with `FileDevice Yes` in `/etc/cups/cups-files.conf.`
+- `sed -i 's/#FileDevice No/FileDevice Yes/' /home/adarsh/cups/conf/cups-files.conf`: Replace `#FileDevice No` with `FileDevice Yes` in `/home/adarsh/cups/conf/cups-files.conf.`
+- Also build again to make changes to take effect.
 
 ## Adding a Virtual Printer
 
 ```bash#
-/home/adarsh/cups/sbin/lpadmin -p MyVirtualPrinter -E -v file:/home/adarsh/output.pdf
+/home/adarsh/cups/build/sbin/lpadmin -p MyVirtualPrinter -E -v file:/home/adarsh/output.pdf
 ```
-- `/home/adarsh/cups/sbin/lpadmin` : Path for `lpadmin` in CUPS.
+- `/home/adarsh/cups/build/sbin/lpadmin` : Path for `lpadmin` in CUPS.
 - `-p MyVirtualPrinter` : Specifies the name of the printer.
 - `-E` : Enables the printer. 
 - `-v file:/home/adarsh/output.pdf` : Sets the URI for the printer using a file backend. In this case, output.pdf does not exist, effectively simulating a null backend or a non-existent file.
@@ -22,9 +22,9 @@ sudo systemctl restart cups
 ## Printing a File to the Virtual Printer
 
 ```bash
-/home/adarsh/cups/bin/lp -d MyVirtualPrinter /home/adarsh/Downloads/Res.pdf
+/home/adarsh/cups/build/bin/lp -d MyVirtualPrinter /home/adarsh/Downloads/Res.pdf
 ```
-- `/home/adarsh/cups/bin/lp` : Path for `lp` in CUPS.
+- `/home/adarsh/cups/build/bin/lp` : Path for `lp` in CUPS.
 - `-d MyVirtualPrinter` : Specifies the name of the printer.
 - `/home/adarsh/Downloads/Res.pdf` : The file to be printed.
 
